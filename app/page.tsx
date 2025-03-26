@@ -255,7 +255,7 @@ export default function Home() {
                   <div className="space-y-3">
                     <div className="contact-item">
                       <Phone />
-                      <span>639420113</span>
+                      <span>+34639420113</span>
                     </div>
                     <div className="contact-item">
                       <Mail />
@@ -538,7 +538,7 @@ export default function Home() {
                   </a>
                 </Button>
                 <Button asChild variant="outline" className="btn-outline">
-                  <a href="tel:639420113">
+                  <a href="tel:+34639420113">
                     <Phone className="w-4 h-4 mr-2" />
                     Call Me
                   </a>
