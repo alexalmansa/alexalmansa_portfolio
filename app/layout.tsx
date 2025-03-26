@@ -1,28 +1,23 @@
-import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Alex Almansa - DevOps Engineer",
-  description: "Professional portfolio of Alex Almansa, DevOps and Cloud Engineer based in Barcelona",
-    generator: 'v0.dev'
+  title: "Alex Almansa - DevOps & Cloud Engineer",
+  description: "Portfolio website for Alex Almansa, DevOps and Cloud Engineer specializing in AWS, GCP, and Kubernetes.",
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
+    <html lang="en" className="scroll-smooth">
+      <body className={`${inter.className} antialiased min-h-screen bg-background`}>
+        {children}
       </body>
     </html>
   )
