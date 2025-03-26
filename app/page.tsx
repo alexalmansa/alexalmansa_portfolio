@@ -1,9 +1,106 @@
+"use client";
+
 import Image from "next/image"
 import Link from "next/link"
+import { useState } from "react"
 import { Github, Linkedin, Mail, MapPin, Phone, Globe, ExternalLink, Lock, Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
+// Custom icon components for unsupported icons
+interface IconProps extends React.SVGProps<SVGSVGElement> {
+  size?: number;
+}
+
+const ChevronLeft = ({ size = 24, ...props }: IconProps) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M15 18l-6-6 6-6" />
+  </svg>
+);
+
+const ChevronRight = ({ size = 24, ...props }: IconProps) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M9 18l6-6-6-6" />
+  </svg>
+);
+
+const X = ({ size = 24, ...props }: IconProps) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+    {...props}
+  >
+    <line x1="18" y1="6" x2="6" y2="18" />
+    <line x1="6" y1="6" x2="18" y2="18" />
+  </svg>
+);
+
 export default function Home() {
+  const [showGallery, setShowGallery] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  const realEstateImages = [
+    {
+      src: "/real-estate-screenshot.png",
+      alt: "Real Estate Dashboard",
+    },
+    {
+      src: "/real-estate-properties.png",
+      alt: "Properties Management",
+    },
+    {
+      src: "/real-estate-map.png",
+      alt: "Property Map View",
+    },
+  ];
+
+  const handleOpenGallery = (index: number) => {
+    setCurrentImageIndex(index);
+    setShowGallery(true);
+  };
+
+  const handleCloseGallery = () => {
+    setShowGallery(false);
+  };
+
+  const handlePrevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev === 0 ? realEstateImages.length - 1 : prev - 1));
+  };
+
+  const handleNextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev === realEstateImages.length - 1 ? 0 : prev + 1));
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
@@ -370,20 +467,41 @@ export default function Home() {
                     className="w-full h-full object-cover rounded-md"
                   />
                 </div>
-                <h3 className="project-title">Real Estate Management System</h3>
-                <p className="project-description">
+                
+                <h3 className="mt-4 text-xl font-bold">Real Estate Management System</h3>
+                <p className="mt-2 text-muted-foreground">
                   A modern, responsive web application for managing real estate properties, buildings, tenants, and
                   related operations. This comprehensive system streamlines property management workflows and financial
                   operations.
                 </p>
-                <div className="tech-stack">
+                
+                <h4 className="mt-4 font-semibold">Project Gallery</h4>
+                <div className="project-gallery">
+                  {realEstateImages.map((image, index) => (
+                    <div 
+                      key={index} 
+                      className="gallery-item"
+                      onClick={() => handleOpenGallery(index)}
+                    >
+                      <Image 
+                        src={image.src} 
+                        alt={image.alt}
+                        width={300}
+                        height={169}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="tech-stack mt-4">
                   {["Next.js 14", "TypeScript", "Tailwind CSS", "Radix UI", "Supabase", "AWS S3", "Google Maps API", "Framer Motion"].map((tech) => (
                     <span key={tech} className="skill-tag">
                       {tech}
                     </span>
                   ))}
                 </div>
-                <div className="flex gap-4">
+                <div className="flex gap-4 mt-4">
                   <Button asChild variant="outline" disabled className="btn-outline">
                     <span>
                       <Lock className="w-4 h-4 mr-2" />
@@ -425,6 +543,30 @@ export default function Home() {
           </div>
         </section>
       </main>
+
+      {/* Full screen gallery */}
+      {showGallery && (
+        <div className="gallery-fullscreen" onClick={handleCloseGallery}>
+          <div className="gallery-fullscreen-content" onClick={(e) => e.stopPropagation()}>
+            <Image 
+              src={realEstateImages[currentImageIndex].src}
+              alt={realEstateImages[currentImageIndex].alt}
+              width={1200}
+              height={675}
+              className="w-full h-auto"
+            />
+            <button className="gallery-close" onClick={handleCloseGallery}>
+              <X size={24} />
+            </button>
+            <button className="gallery-nav gallery-prev" onClick={handlePrevImage}>
+              <ChevronLeft size={24} />
+            </button>
+            <button className="gallery-nav gallery-next" onClick={handleNextImage}>
+              <ChevronRight size={24} />
+            </button>
+          </div>
+        </div>
+      )}
 
       <footer className="py-6 border-t">
         <div className="container text-center text-muted-foreground">
