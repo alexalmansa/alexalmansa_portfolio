@@ -142,9 +142,9 @@ export default function Home() {
                 </h1>
                 <h2 className="hero-subtitle">DevOps / Cloud Engineer</h2>
                 <p className="hero-description">
-                  Cloud & DevOps Engineer with expertise in AWS, GCP, and Kubernetes. Skilled in infrastructure as code
-                  using Terraform and cloud formation, CI/CD, and container orchestration with Docker. Experience in
-                  monitoring, security, and cost optimization strategies.
+                  Cloud & DevOps Engineer with expertise in AWS, GCP, and Kubernetes. Passionate about automating complex processes
+                  and creating well-documented solutions. Skilled in infrastructure as code using Terraform and cloud formation, 
+                  CI/CD, and container orchestration with Docker. Experience in monitoring, security, and cost optimization strategies.
                 </p>
                 <div className="flex gap-4 pt-4">
                   <Button asChild variant="default" className="btn-primary">
@@ -216,6 +216,11 @@ export default function Home() {
                   I specialize in cloud technologies like AWS and GCP, with expertise in Kubernetes environments. My
                   approach combines technical knowledge with a focus on efficiency and reliability to create robust
                   infrastructure solutions.
+                </p>
+                <p>
+                  One of my core passions is automating complex processes and making apparently difficult tasks simple and accessible. 
+                  I believe in the power of well-documented code and clear documentation to transform complex technical challenges into 
+                  manageable solutions, enabling teams to work more efficiently and reducing operational overhead.
                 </p>
                 <p>
                   Based in Barcelona, I'm available for travel and always looking for new challenges in the DevOps and
