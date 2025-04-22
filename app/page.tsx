@@ -773,7 +773,7 @@ export default function Home() {
                   </div>
                   <div className="flex gap-4 mt-3 md:mt-4">
                     <Button asChild variant="default" size="sm" className="btn-primary text-xs md:text-sm">
-                      <Link href="https://dropin-surf.com" target="_blank">
+                      <Link href="https://dropinbcn.com" target="_blank">
                         <ExternalLink className="w-3 h-3 md:w-4 md:h-4 mr-2" />
                         Visit Website
                       </Link>
