@@ -260,6 +260,36 @@ export default function Home() {
     setCurrentImageIndex((prev) => (prev === realEstateImages.length - 1 ? 0 : prev + 1));
   };
 
+  // Add TrailReplay images array and state, similar to realEstateImages
+  const trailReplayImages = [
+    {
+      src: "/TrailReplayLanding.png",
+      alt: "TrailReplay Landing Page",
+    },
+    {
+      src: "/TrailReplayAnimation.png",
+      alt: "TrailReplay Animation Demo",
+    },
+  ];
+  const [showTrailReplayGallery, setShowTrailReplayGallery] = useState(false);
+  const [currentTrailReplayImageIndex, setCurrentTrailReplayImageIndex] = useState(0);
+
+  const handleOpenTrailReplayGallery = (index: number) => {
+    setCurrentTrailReplayImageIndex(index);
+    setShowTrailReplayGallery(true);
+  };
+  const handleCloseTrailReplayGallery = () => {
+    setShowTrailReplayGallery(false);
+  };
+  const handlePrevTrailReplayImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentTrailReplayImageIndex((prev) => (prev === 0 ? trailReplayImages.length - 1 : prev - 1));
+  };
+  const handleNextTrailReplayImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentTrailReplayImageIndex((prev) => (prev === trailReplayImages.length - 1 ? 0 : prev + 1));
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
@@ -549,9 +579,7 @@ export default function Home() {
                   <p className="text-muted-foreground">2024 - Present</p>
                   <div className="mt-4 space-y-2">
                     <p>
-                      As the DevOps Engineer responsible for the company's main backend project, I manage monitoring,
-                      implement CI/CD pipelines, and handle resource provisioning in AWS and Google Cloud within a
-                      Kubernetes environment. Additionally, I maintain the cloud infrastructure company-wide.
+                      As the DevOps Engineer responsible for the company’s main backend platform, I manage distributed cloud infrastructure deployed in AWS and Google Cloud, orchestrated with Kubernetes. My role includes implementing CI/CD pipelines, configuring monitoring and alerting systems, and provisioning resources using Infrastructure-as-Code (Terraform). I recently designed and deployed a fully automated system for Bitbucket self-hosted runners with Python-based autoscaling logic, running on Hetzner Cloud. I also oversee company-wide cloud operations, ensuring scalability, security, and cost-efficiency across environments.
                     </p>
                   </div>
                 </motion.div>
@@ -567,9 +595,7 @@ export default function Home() {
                   <p className="text-muted-foreground">2021 - 2023</p>
                   <div className="mt-4 space-y-2">
                     <p>
-                      Contributed to the development of the Scheduling Engine, a microservices-based system for efficiently
-                      assigning crew to flights. Utilized Java and the Spring framework to build scalable and maintainable
-                      applications, and implemented RabbitMQ for reliable inter-service communication.
+                      Contributed to the development of the Scheduling Engine, a distributed microservices-based system designed to optimize flight crew assignment. Developed backend services in Java using the Spring framework, with a focus on scalability, modularity, and maintainability. Implemented asynchronous communication between services using RabbitMQ, ensuring reliable message delivery and system decoupling. Actively participated in the architectural design and performance tuning of a system built to support high availability and operational efficiency.
                     </p>
                   </div>
                 </motion.div>
@@ -585,8 +611,7 @@ export default function Home() {
                   <p className="text-muted-foreground">2019 - 2021</p>
                   <div className="mt-4 space-y-2">
                     <p>
-                      Worked in a consulting role primarily focused on mobile app development and backend services. I
-                      contributed to multiple projects, including supporting the Mobile World Congress 2021 (MWC2021) app.
+                      Worked in a consulting role primarily focused on mobile app development and backend services, mainly using Python. I contributed to multiple projects, including supporting the Mobile World Congress 2021 (MWC2021) app.
                     </p>
                   </div>
                 </motion.div>
@@ -609,7 +634,7 @@ export default function Home() {
               >
                 <div className="timeline-dot"></div>
                 <h3 className="text-xl font-bold">Bachelor Degree in Computer Engineering</h3>
-                <h4 className="text-primary font-medium">La Salle BCN, Ramon Llull University</h4>
+                <h4 className="text-primary font-medium">La Salle BCN, Ramon Llull University.</h4>
                 <p className="text-muted-foreground">2016 - 2021</p>
               </motion.div>
             </div>
@@ -843,6 +868,70 @@ export default function Home() {
                     </Button>
                   </div>
                 </motion.div>
+                <motion.div 
+                  className="project-card"
+                  variants={fadeIn}
+                  whileHover={{ y: -10, transition: { duration: 0.2 } }}
+                >
+                  <div className="project-image">
+                    <Image 
+                      src="/TrailReplayLanding.png" 
+                      alt="TrailReplay Landing Page" 
+                      width={600} 
+                      height={300}
+                      className="w-full h-full object-cover rounded-md"
+                    />
+                  </div>
+                  <h3 className="mt-3 md:mt-4 text-lg md:text-xl font-bold">TrailReplay - Outdoor Activity Tracker & Replay</h3>
+                  <p className="mt-2 text-sm md:text-base text-muted-foreground">
+                    TrailReplay is a web application for tracking, visualizing, and replaying outdoor activities like hiking, running, and cycling. Users can upload GPS tracks, view interactive maps, and share their adventures.
+                  </p>
+                  <h4 className="mt-3 md:mt-4 text-md md:text-lg font-semibold">Project Gallery</h4>
+                  <div className="project-gallery grid grid-cols-3 gap-2 md:gap-3 mt-2 md:mt-3">
+                    {trailReplayImages.map((image, index) => (
+                      <motion.div 
+                        key={index} 
+                        className="gallery-item"
+                        onClick={() => handleOpenTrailReplayGallery(index)}
+                        whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                      >
+                        <Image 
+                          src={image.src} 
+                          alt={image.alt}
+                          width={300}
+                          height={169}
+                          className="w-full h-full object-cover rounded-sm md:rounded"
+                        />
+                      </motion.div>
+                    ))}
+                  </div>
+                  <div className="tech-stack mt-3 md:mt-4">
+                    {["Next.js", "TypeScript", "Mapbox GL JS", "Tailwind CSS",  "Framer Motion"].map((tech, index) => (
+                      <motion.span 
+                        key={tech} 
+                        className="skill-tag text-xs md:text-sm"
+                        variants={skillTagVariants}
+                        custom={index}
+                      >
+                        {tech}
+                      </motion.span>
+                    ))}
+                  </div>
+                  <div className="flex gap-4 mt-3 md:mt-4">
+                    <Button asChild variant="default" size="sm" className="btn-primary text-xs md:text-sm">
+                      <Link href="https://trailreplay.com" target="_blank">
+                        <ExternalLink className="w-3 h-3 md:w-4 md:h-4 mr-2" />
+                        Visit Website
+                      </Link>
+                    </Button>
+                    <Button asChild variant="outline" size="sm" className="btn-outline text-xs md:text-sm">
+                      <Link href="https://github.com/alexalmansa/TrailReplay" target="_blank">
+                        <Github className="w-4 h-4 mr-2" />
+                        GitHub
+                      </Link>
+                    </Button>
+                  </div>
+                </motion.div>
               </motion.div>
             </div>
           </AnimatedSection>
@@ -899,6 +988,30 @@ export default function Home() {
               <ChevronLeft size={20} />
             </button>
             <button className="gallery-nav gallery-next absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-black/50 rounded-full text-white" onClick={handleNextImage}>
+              <ChevronRight size={20} />
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Full screen gallery for TrailReplay */}
+      {showTrailReplayGallery && (
+        <div className="gallery-fullscreen fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4" onClick={handleCloseTrailReplayGallery}>
+          <div className="gallery-fullscreen-content relative max-w-4xl mx-auto" onClick={(e) => e.stopPropagation()}>
+            <Image 
+              src={trailReplayImages[currentTrailReplayImageIndex].src}
+              alt={trailReplayImages[currentTrailReplayImageIndex].alt}
+              width={1200}
+              height={675}
+              className="w-full h-auto rounded-md"
+            />
+            <button className="gallery-close absolute top-2 right-2 md:top-4 md:right-4 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-black/50 rounded-full text-white" onClick={handleCloseTrailReplayGallery}>
+              <X size={20} />
+            </button>
+            <button className="gallery-nav gallery-prev absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-black/50 rounded-full text-white" onClick={handlePrevTrailReplayImage}>
+              <ChevronLeft size={20} />
+            </button>
+            <button className="gallery-nav gallery-next absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-black/50 rounded-full text-white" onClick={handleNextTrailReplayImage}>
               <ChevronRight size={20} />
             </button>
           </div>
