@@ -434,8 +434,10 @@ export default function Home() {
                     alt="Alex Almansa profile picture"
                     width={320}
                     height={320}
-                    className="object-cover"
+                    className="object-cover no-copy"
                     priority
+                    draggable={false}
+                    onContextMenu={e => e.preventDefault()}
                   />
                 </div>
               </motion.div>
@@ -532,7 +534,7 @@ export default function Home() {
                       </div>
                       <div className="contact-item text-sm md:text-base">
                         <MapPin className="w-4 h-4 md:w-5 md:h-5 flex-shrink-0" />
-                        <span>Carrer Montseny 5, Sant Feliu de Codines, Barcelona</span>
+                        <span>Barcelona surroundings</span>
                       </div>
                       <div className="contact-item text-sm md:text-base">
                         <Globe className="w-4 h-4 md:w-5 md:h-5 flex-shrink-0" />
