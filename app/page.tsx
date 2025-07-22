@@ -534,11 +534,7 @@ export default function Home() {
                       </div>
                       <div className="contact-item text-sm md:text-base">
                         <MapPin className="w-4 h-4 md:w-5 md:h-5 flex-shrink-0" />
-                        <span>Barcelona surroundings</span>
-                      </div>
-                      <div className="contact-item text-sm md:text-base">
-                        <Globe className="w-4 h-4 md:w-5 md:h-5 flex-shrink-0" />
-                        <span>Based in Barcelona</span>
+                        <span>Barcelona area</span>
                       </div>
                     </div>
                   </motion.div>
