@@ -147,10 +147,11 @@ const trailReplayHighlights = [
 ]
 
 const reserbeeCapabilities = [
-  "Reservations, payments, and CRM",
-  "Event ticketing and academy flows",
-  "WhatsApp and Instagram automation",
-  "Industry-specific booking journeys",
+  "Websites",
+  "Payments",
+  "CRM",
+  "Marketing",
+  "AI automation",
 ]
 
 const reserbeeProjects = [
@@ -165,12 +166,6 @@ const reserbeeProjects = [
     category: "Events & MMA",
     summary: "Fight event registration, event pages, and operational flows for Barcelona.",
     href: "https://thewarriorstournament.reserbee.app/",
-  },
-  {
-    name: "Camello Bandido",
-    category: "Restaurant",
-    summary: "Online reservations plus a complete digital menu for a Mexican restaurant.",
-    href: "https://camellobandido.reserbee.app/",
   },
   {
     name: "Bife",
@@ -288,7 +283,7 @@ const ReserBeePreview = () => (
           <div className="mt-1 text-xl font-semibold text-[#1f1c13]">Booking platform + client rollouts</div>
         </div>
         <div className="rounded-full border border-[#e7d79a] bg-white/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#7f6b2f]">
-          5 live showcases
+          4 live showcases
         </div>
       </div>
       <div className="grid gap-4 lg:grid-cols-[0.82fr_1.18fr]">
@@ -855,13 +850,22 @@ export default function Home() {
                         <div className="mb-3 inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#f0c9af]">
                           Product
                         </div>
-                        <h3 className="text-2xl font-semibold tracking-tight text-white md:text-3xl">
-                          TrailReplay
-                        </h3>
+                        <div className="flex items-center gap-3">
+                          <Image
+                            src="/trailreplay-logo.png"
+                            alt="TrailReplay logo"
+                            width={44}
+                            height={44}
+                            className="h-11 w-11 rounded-xl"
+                          />
+                          <h3 className="text-2xl font-semibold tracking-tight text-white md:text-3xl">
+                            TrailReplay
+                          </h3>
+                        </div>
                         <p className="mt-3 text-sm leading-relaxed text-white/[0.68] md:text-base">
-                          TrailReplay has evolved into a GPX-to-video converter for runners, cyclists, hikers, and outdoor
-                          creators. It turns raw GPS tracks into polished replay videos with animated maps, elevation, stats,
-                          media inserts, and export-ready output.
+                          TrailReplay converts GPX tracks into polished replay videos for runners, cyclists, hikers, and
+                          outdoor creators, combining animated maps, elevation, stats, media inserts, and export-ready
+                          output. The website receives around 2,000 users monthly, with an average time on page of 5 minutes.
                         </p>
                       </div>
                       <div>
@@ -913,17 +917,25 @@ export default function Home() {
                         <div className="mb-3 inline-flex rounded-full border border-[#ebdcaf] bg-white/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#88753b]">
                           Platform
                         </div>
-                        <h3 className="text-2xl font-semibold tracking-tight text-[#201c13] md:text-3xl">
-                          ReserBee
-                        </h3>
+                        <div className="flex items-center gap-3">
+                          <Image
+                            src="/reserbee-logo.svg"
+                            alt="ReserBee logo"
+                            width={44}
+                            height={44}
+                            className="h-11 w-11"
+                          />
+                          <h3 className="text-2xl font-semibold tracking-tight text-[#201c13] md:text-3xl">
+                            ReserBee
+                          </h3>
+                        </div>
                         <p className="mt-3 text-sm leading-relaxed text-[#5d5337] md:text-base">
-                          ReserBee is a reservation management platform combining websites, payments, CRM, marketing, and
-                          AI automation. It is built for restaurants, events, trainers, wellness businesses, consultants,
-                          and other booking-led operations.
+                          ReserBee combines websites, payments, CRM, marketing, and AI automation. It is built for
+                          restaurants, events, trainers, wellness businesses, consultants, and other booking-led operations.
                         </p>
                       </div>
                       <div>
-                        <div className="mb-4 grid gap-2 sm:grid-cols-2">
+                        <div className="mb-4 grid gap-2 sm:grid-cols-3">
                           {reserbeeCapabilities.map((item) => (
                             <div key={item} className="rounded-2xl border border-[#ecdcb0] bg-white/70 px-3 py-3 text-sm text-[#3d3420]">
                               {item}
