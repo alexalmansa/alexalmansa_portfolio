@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import React, { useState, useEffect, useRef } from "react"
-import { Github, Linkedin, Mail, MapPin, Globe, ExternalLink, Lock, Download } from "lucide-react"
+import { Github, Linkedin, Mail, MapPin, ExternalLink, Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 
@@ -78,79 +78,6 @@ const skillTagVariants = {
   }
 };
 
-// Custom icon components for unsupported icons
-interface IconProps extends React.SVGProps<SVGSVGElement> {
-  size?: number;
-}
-
-const ChevronLeft = ({ size = 24, ...props }: IconProps) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
-    {...props}
-  >
-    <path d="M15 18l-6-6 6-6" />
-  </svg>
-);
-
-const ChevronRight = ({ size = 24, ...props }: IconProps) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
-    {...props}
-  >
-    <path d="M9 18l6-6-6-6" />
-  </svg>
-);
-
-const X = ({ size = 24, ...props }: IconProps) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
-    {...props}
-  >
-    <line x1="18" y1="6" x2="6" y2="18" />
-    <line x1="6" y1="6" x2="18" y2="18" />
-  </svg>
-);
-
-// Custom hook for scroll animations
-const useAnimationOnScroll = () => {
-  const [scrollY, setScrollY] = useState(0);
-  
-  const handleScroll = () => {
-    setScrollY(window.scrollY);
-  };
-  
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-  
-  return scrollY;
-};
-
 // Animated Section Component
 interface AnimatedSectionProps {
   children: React.ReactNode;
@@ -212,9 +139,216 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   );
 };
 
+const trailReplayHighlights = [
+  "GPX to video conversion",
+  "3D terrain and animated route playback",
+  "Map styles, stats overlays, and elevation",
+  "Media storytelling and export-ready videos",
+]
+
+const reserbeeCapabilities = [
+  "Reservations, payments, and CRM",
+  "Event ticketing and academy flows",
+  "WhatsApp and Instagram automation",
+  "Industry-specific booking journeys",
+]
+
+const reserbeeProjects = [
+  {
+    name: "Mountain Memories",
+    category: "Tours & Activities",
+    summary: "Lodging and ski operations in Hokkaido with a guided booking funnel.",
+    href: "https://mtnmemories.com",
+  },
+  {
+    name: "The Warriors Tournament",
+    category: "Events & MMA",
+    summary: "Fight event registration, event pages, and operational flows for Barcelona.",
+    href: "https://thewarriorstournament.reserbee.app/",
+  },
+  {
+    name: "Camello Bandido",
+    category: "Restaurant",
+    summary: "Online reservations plus a complete digital menu for a Mexican restaurant.",
+    href: "https://camellobandido.reserbee.app/",
+  },
+  {
+    name: "Bife",
+    category: "Restaurant",
+    summary: "Premium steakhouse bookings with prepaid dining experiences.",
+    href: "https://www.bifexperience.com/",
+  },
+  {
+    name: "Little Steps TDH",
+    category: "Health & Therapy",
+    summary: "Therapy session booking and resource access for children and families.",
+    href: "https://littlestepstdh-frontend.pages.dev/",
+  },
+]
+
+const TrailReplayPreview = () => (
+  <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#111315] p-5 shadow-[0_32px_80px_-42px_rgba(0,0,0,0.95)]">
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(193,101,47,0.26),transparent_28%),radial-gradient(circle_at_left,rgba(73,167,255,0.16),transparent_34%)]" />
+    <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.16) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.16) 1px, transparent 1px)", backgroundSize: "26px 26px" }} />
+    <div className="relative space-y-4">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span className="h-2.5 w-2.5 rounded-full bg-[#ff9a62]" />
+          <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
+          <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
+        </div>
+        <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.34em] text-white/[0.65]">
+          GPX to Video
+        </span>
+      </div>
+      <div className="grid gap-4 lg:grid-cols-[1.25fr_0.75fr]">
+        <div className="relative min-h-[260px] overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/[0.04] p-4">
+          <div className="absolute left-5 top-5 rounded-full border border-white/10 bg-black/[0.35] px-3 py-1 text-[10px] uppercase tracking-[0.28em] text-white/[0.65]">
+            Alpine replay
+          </div>
+          <svg viewBox="0 0 500 280" className="absolute inset-0 h-full w-full">
+            <path d="M26 232 C88 182, 118 172, 158 184 S224 250, 260 215 S322 106, 366 114 S430 186, 474 126" fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="24" strokeLinecap="round" />
+            <path d="M26 232 C88 182, 118 172, 158 184 S224 250, 260 215 S322 106, 366 114 S430 186, 474 126" fill="none" stroke="rgba(193,101,47,0.95)" strokeWidth="7" strokeLinecap="round" />
+            <motion.circle
+              cx="366"
+              cy="114"
+              r="8"
+              fill="#f7e5d8"
+              animate={{ scale: [1, 1.3, 1], opacity: [0.8, 1, 0.8] }}
+              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </svg>
+          <div className="absolute bottom-4 left-4 right-4 grid grid-cols-3 gap-3">
+            {[
+              { label: "Distance", value: "42.7 km" },
+              { label: "Elevation", value: "+1,940 m" },
+              { label: "Scenes", value: "18 clips" },
+            ].map((stat) => (
+              <div key={stat.label} className="rounded-2xl border border-white/10 bg-black/[0.35] px-3 py-3 backdrop-blur-sm">
+                <div className="text-[10px] uppercase tracking-[0.28em] text-white/[0.45]">{stat.label}</div>
+                <div className="mt-1 text-sm font-semibold text-white">{stat.value}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="space-y-4">
+          <div className="rounded-[1.6rem] border border-white/10 bg-white/[0.05] p-4">
+            <div className="text-[10px] uppercase tracking-[0.3em] text-white/[0.45]">Pipeline</div>
+            <div className="mt-3 space-y-3">
+              {["Upload GPX", "Style route", "Add media", "Render MP4"].map((step, index) => (
+                <motion.div
+                  key={step}
+                  className="flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-black/20 px-3 py-2"
+                  animate={{ x: index === 2 ? [0, 4, 0] : 0 }}
+                  transition={{ duration: 2.4, repeat: Infinity, delay: index * 0.2, ease: "easeInOut" }}
+                >
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#c1652f] text-[11px] font-semibold text-white">
+                    0{index + 1}
+                  </span>
+                  <span className="text-sm text-white/[0.84]">{step}</span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+          <div className="rounded-[1.6rem] border border-white/10 bg-white/[0.05] p-4">
+            <div className="flex items-end justify-between">
+              <div>
+                <div className="text-[10px] uppercase tracking-[0.3em] text-white/[0.45]">Export health</div>
+                <div className="mt-2 text-2xl font-semibold text-white">Ready</div>
+              </div>
+              <div className="text-xs text-[#ffb387]">4K • vertical • square</div>
+            </div>
+            <div className="mt-4 h-20 rounded-[1.2rem] border border-white/[0.08] bg-black/20 p-3">
+              <div className="flex h-full items-end gap-2">
+                {[32, 58, 49, 76, 55, 70, 84, 63].map((height, index) => (
+                  <motion.div
+                    key={`${height}-${index}`}
+                    className="flex-1 rounded-full bg-gradient-to-t from-[#c1652f] via-[#da8f60] to-[#f0d9c9]"
+                    style={{ height: `${height}%` }}
+                    animate={{ opacity: index === 4 ? [0.7, 1, 0.7] : 1 }}
+                    transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut", delay: index * 0.08 }}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+)
+
+const ReserBeePreview = () => (
+  <div className="relative overflow-hidden rounded-[2rem] border border-[#efe1ba] bg-[#fff8e6] p-5 shadow-[0_30px_70px_-40px_rgba(90,72,22,0.45)]">
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,236,133,0.5),transparent_25%),radial-gradient(circle_at_bottom_left,rgba(255,220,102,0.35),transparent_34%)]" />
+    <div className="relative space-y-4">
+      <div className="flex items-center justify-between">
+        <div>
+          <div className="text-[10px] uppercase tracking-[0.34em] text-[#8f7f4d]">ReserBee ecosystem</div>
+          <div className="mt-1 text-xl font-semibold text-[#1f1c13]">Booking platform + client rollouts</div>
+        </div>
+        <div className="rounded-full border border-[#e7d79a] bg-white/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#7f6b2f]">
+          5 live showcases
+        </div>
+      </div>
+      <div className="grid gap-4 lg:grid-cols-[0.82fr_1.18fr]">
+        <div className="space-y-4">
+          <div className="rounded-[1.5rem] border border-[#ead9a2] bg-white/80 p-4">
+            <div className="text-[10px] uppercase tracking-[0.3em] text-[#98854b]">Core modules</div>
+            <div className="mt-3 grid gap-2">
+              {["Reservations", "Payments", "CRM", "AI Bots"].map((module, index) => (
+                <motion.div
+                  key={module}
+                  className="rounded-2xl border border-[#f0e2b8] bg-[#fffaf0] px-3 py-2 text-sm font-medium text-[#2a2416]"
+                  animate={{ y: index === 1 ? [0, -2, 0] : 0 }}
+                  transition={{ duration: 2.8, repeat: Infinity, delay: index * 0.16, ease: "easeInOut" }}
+                >
+                  {module}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+          <div className="rounded-[1.5rem] border border-[#ead9a2] bg-[#211d13] p-4 text-white">
+            <div className="text-[10px] uppercase tracking-[0.3em] text-[#f0d989]">Target verticals</div>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {["Restaurants", "Events", "Wellness", "Consulting", "SaaS"].map((vertical) => (
+                <span key={vertical} className="rounded-full border border-white/10 bg-white/[0.08] px-3 py-1 text-xs text-white/[0.78]">
+                  {vertical}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="rounded-[1.5rem] border border-[#ead9a2] bg-white/[0.82] p-4">
+          <div className="flex items-center justify-between">
+            <div className="text-[10px] uppercase tracking-[0.3em] text-[#98854b]">Client projects</div>
+            <div className="text-xs text-[#6f5d27]">Spain, Japan, remote-first</div>
+          </div>
+          <div className="mt-3 space-y-2.5">
+            {reserbeeProjects.map((project, index) => (
+              <motion.div
+                key={project.name}
+                className="rounded-[1.2rem] border border-[#f2e5c0] bg-[#fffaf1] px-3 py-3"
+                animate={{ x: index === 3 ? [0, 3, 0] : 0 }}
+                transition={{ duration: 3.2, repeat: Infinity, delay: index * 0.12, ease: "easeInOut" }}
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <div className="text-sm font-semibold text-[#201a10]">{project.name}</div>
+                    <div className="mt-0.5 text-[11px] uppercase tracking-[0.22em] text-[#8b7840]">{project.category}</div>
+                  </div>
+                  <div className="h-2.5 w-2.5 rounded-full bg-[#f3c93f]" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+)
+
 export default function Home() {
-  const [showGallery, setShowGallery] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   
   // Trigger animations after initial load
@@ -225,70 +359,6 @@ export default function Home() {
     
     return () => clearTimeout(timer);
   }, []);
-  
-  const realEstateImages = [
-    {
-      src: "/real-estate-screenshot.png",
-      alt: "Real Estate Dashboard",
-    },
-    {
-      src: "/real-estate-properties.png",
-      alt: "Properties Management",
-    },
-    {
-      src: "/real-estate-map.png",
-      alt: "Property Map View",
-    },
-  ];
-
-  const handleOpenGallery = (index: number) => {
-    setCurrentImageIndex(index);
-    setShowGallery(true);
-  };
-
-  const handleCloseGallery = () => {
-    setShowGallery(false);
-  };
-
-  const handlePrevImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrentImageIndex((prev) => (prev === 0 ? realEstateImages.length - 1 : prev - 1));
-  };
-
-  const handleNextImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrentImageIndex((prev) => (prev === realEstateImages.length - 1 ? 0 : prev + 1));
-  };
-
-  // Add TrailReplay images array and state, similar to realEstateImages
-  const trailReplayImages = [
-    {
-      src: "/TrailReplayLanding.png",
-      alt: "TrailReplay Landing Page",
-    },
-    {
-      src: "/TrailReplayAnimation.png",
-      alt: "TrailReplay Animation Demo",
-    },
-  ];
-  const [showTrailReplayGallery, setShowTrailReplayGallery] = useState(false);
-  const [currentTrailReplayImageIndex, setCurrentTrailReplayImageIndex] = useState(0);
-
-  const handleOpenTrailReplayGallery = (index: number) => {
-    setCurrentTrailReplayImageIndex(index);
-    setShowTrailReplayGallery(true);
-  };
-  const handleCloseTrailReplayGallery = () => {
-    setShowTrailReplayGallery(false);
-  };
-  const handlePrevTrailReplayImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrentTrailReplayImageIndex((prev) => (prev === 0 ? trailReplayImages.length - 1 : prev - 1));
-  };
-  const handleNextTrailReplayImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrentTrailReplayImageIndex((prev) => (prev === trailReplayImages.length - 1 ? 0 : prev + 1));
-  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -759,175 +829,149 @@ export default function Home() {
               >
                 <span>05.</span> Personal Projects
               </motion.h2>
+              <motion.div
+                className="mb-10 max-w-3xl"
+                variants={fadeIn}
+              >
+                <p className="text-sm md:text-base text-muted-foreground">
+                  Two product-focused builds define the current portfolio: TrailReplay, now positioned as a GPX-to-video
+                  storytelling tool, and ReserBee, an all-in-one bookings platform already powering live websites across
+                  hospitality, events, and health services.
+                </p>
+              </motion.div>
               <motion.div 
-                className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
+                className="grid grid-cols-1 gap-8"
                 variants={staggerContainer}
               >
                 <motion.div 
-                  className="project-card"
+                  className="project-card overflow-hidden rounded-[2rem] border-0 bg-[#0f1113] p-0 text-white shadow-[0_34px_90px_-48px_rgba(0,0,0,0.85)]"
                   variants={fadeIn}
-                  whileHover={{ y: -10, transition: { duration: 0.2 } }}
+                  whileHover={{ y: -8, transition: { duration: 0.25, type: "spring", stiffness: 120 } }}
                 >
-                  <div className="project-image">
-                    <Image 
-                      src="/drop-in-screenshot.png" 
-                      alt="Drop In Surf Wave Pool website screenshot" 
-                      width={600} 
-                      height={300}
-                      className="w-full h-full object-cover rounded-md"
-                    />
-                  </div>
-                  <h3 className="project-title text-lg md:text-xl font-bold mt-3 md:mt-4">Drop In - Surf Wave Pool Booking Platform</h3>
-                  <p className="project-description text-sm md:text-base mt-2 text-muted-foreground">
-                    A modern web application for booking sessions at a wave pool surfing facility. Built with Next.js 13+,
-                    TypeScript, and Supabase, it offers a seamless experience for surf enthusiasts.
-                  </p>
-                  <div className="tech-stack mt-3 md:mt-4">
-                    {["Next.js", "TypeScript", "Supabase", "Stripe", "Google Maps API", "Tailwind CSS", "Shadcn UI"].map((tech, index) => (
-                      <motion.span 
-                        key={tech} 
-                        className="skill-tag text-xs md:text-sm"
-                        variants={skillTagVariants}
-                        custom={index}
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
-                  </div>
-                  <div className="flex gap-4 mt-3 md:mt-4">
-                    <Button asChild variant="default" size="sm" className="btn-primary text-xs md:text-sm">
-                      <Link href="https://dropinbcn.com" target="_blank">
-                        <ExternalLink className="w-3 h-3 md:w-4 md:h-4 mr-2" />
-                        Visit Website
-                      </Link>
-                    </Button>
+                  <div className="grid gap-6 p-6 lg:grid-cols-[1.12fr_0.88fr] lg:p-8">
+                    <TrailReplayPreview />
+                    <div className="flex flex-col justify-between gap-6">
+                      <div>
+                        <div className="mb-3 inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#f0c9af]">
+                          Product
+                        </div>
+                        <h3 className="text-2xl font-semibold tracking-tight text-white md:text-3xl">
+                          TrailReplay
+                        </h3>
+                        <p className="mt-3 text-sm leading-relaxed text-white/[0.68] md:text-base">
+                          TrailReplay has evolved into a GPX-to-video converter for runners, cyclists, hikers, and outdoor
+                          creators. It turns raw GPS tracks into polished replay videos with animated maps, elevation, stats,
+                          media inserts, and export-ready output.
+                        </p>
+                      </div>
+                      <div>
+                        <div className="mb-4 grid gap-2 sm:grid-cols-2">
+                          {trailReplayHighlights.map((item) => (
+                            <div key={item} className="rounded-2xl border border-white/10 bg-white/[0.045] px-3 py-3 text-sm text-white/80">
+                              {item}
+                            </div>
+                          ))}
+                        </div>
+                        <div className="tech-stack mb-0">
+                          {["React", "MapLibre GL", "GPX parsing", "Video export", "3D terrain", "Cloudflare Pages"].map((tech, index) => (
+                            <motion.span 
+                              key={tech}
+                              className="skill-tag border border-white/10 bg-white/[0.05] text-xs text-white/[0.84] hover:bg-white/10 hover:text-white md:text-sm"
+                              variants={skillTagVariants}
+                              custom={index}
+                            >
+                              {tech}
+                            </motion.span>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap gap-3">
+                        <Button asChild variant="default" size="sm" className="bg-[#c1652f] text-white hover:bg-[#a65426]">
+                          <Link href="https://trailreplay.com" target="_blank">
+                            <ExternalLink className="mr-2 h-4 w-4" />
+                            Visit Website
+                          </Link>
+                        </Button>
+                        <Button asChild variant="outline" size="sm" className="border-white/10 bg-transparent text-white hover:bg-white/[0.08] hover:text-white">
+                          <Link href="https://github.com/alexalmansa/TrailReplay" target="_blank">
+                            <Github className="mr-2 h-4 w-4" />
+                            GitHub
+                          </Link>
+                        </Button>
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
                 <motion.div 
-                  className="project-card"
+                  className="project-card overflow-hidden rounded-[2rem] border border-[#eadbb2] bg-[#fff6df] p-0 shadow-[0_30px_80px_-50px_rgba(120,91,16,0.45)]"
                   variants={fadeIn}
-                  whileHover={{ y: -10, transition: { duration: 0.2 } }}
+                  whileHover={{ y: -8, transition: { duration: 0.25, type: "spring", stiffness: 120 } }}
                 >
-                  <div className="project-image">
-                    <Image 
-                      src="/real-estate-screenshot.png" 
-                      alt="Real Estate Management System dashboard screenshot" 
-                      width={600} 
-                      height={300}
-                      className="w-full h-full object-cover rounded-md"
-                    />
-                  </div>
-                  
-                  <h3 className="mt-3 md:mt-4 text-lg md:text-xl font-bold">Real Estate Management System</h3>
-                  <p className="mt-2 text-sm md:text-base text-muted-foreground">
-                    A modern, responsive web application for managing real estate properties, buildings, tenants, and
-                    related operations. This comprehensive system streamlines property management workflows and financial
-                    operations.
-                  </p>
-                  
-                  <h4 className="mt-3 md:mt-4 text-md md:text-lg font-semibold">Project Gallery</h4>
-                  <div className="project-gallery grid grid-cols-3 gap-2 md:gap-3 mt-2 md:mt-3">
-                    {realEstateImages.map((image, index) => (
-                      <motion.div 
-                        key={index} 
-                        className="gallery-item"
-                        onClick={() => handleOpenGallery(index)}
-                        whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-                      >
-                        <Image 
-                          src={image.src} 
-                          alt={image.alt}
-                          width={300}
-                          height={169}
-                          className="w-full h-full object-cover rounded-sm md:rounded"
-                        />
-                      </motion.div>
-                    ))}
-                  </div>
-                  
-                  <div className="tech-stack mt-3 md:mt-4">
-                    {["Next.js 14", "TypeScript", "Tailwind CSS", "Radix UI", "Supabase", "AWS S3", "Google Maps API", "Framer Motion"].map((tech, index) => (
-                      <motion.span 
-                        key={tech} 
-                        className="skill-tag text-xs md:text-sm"
-                        variants={skillTagVariants}
-                        custom={index}
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
-                  </div>
-                  <div className="flex gap-4 mt-3 md:mt-4">
-                    <Button asChild variant="outline" disabled size="sm" className="btn-outline text-xs md:text-sm">
-                      <span>
-                        <Lock className="w-3 h-3 md:w-4 md:h-4 mr-2" />
-                        Private Project
-                      </span>
-                    </Button>
-                  </div>
-                </motion.div>
-                <motion.div 
-                  className="project-card"
-                  variants={fadeIn}
-                  whileHover={{ y: -10, transition: { duration: 0.2 } }}
-                >
-                  <div className="project-image">
-                    <Image 
-                      src="/TrailReplayLanding.png" 
-                      alt="TrailReplay Landing Page" 
-                      width={600} 
-                      height={300}
-                      className="w-full h-full object-cover rounded-md"
-                    />
-                  </div>
-                  <h3 className="mt-3 md:mt-4 text-lg md:text-xl font-bold">TrailReplay - Outdoor Activity Tracker & Replay</h3>
-                  <p className="mt-2 text-sm md:text-base text-muted-foreground">
-                    TrailReplay is a web application for tracking, visualizing, and replaying outdoor activities like hiking, running, and cycling. Users can upload GPS tracks, view interactive maps, and share their adventures.
-                  </p>
-                  <h4 className="mt-3 md:mt-4 text-md md:text-lg font-semibold">Project Gallery</h4>
-                  <div className="project-gallery grid grid-cols-3 gap-2 md:gap-3 mt-2 md:mt-3">
-                    {trailReplayImages.map((image, index) => (
-                      <motion.div 
-                        key={index} 
-                        className="gallery-item"
-                        onClick={() => handleOpenTrailReplayGallery(index)}
-                        whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-                      >
-                        <Image 
-                          src={image.src} 
-                          alt={image.alt}
-                          width={300}
-                          height={169}
-                          className="w-full h-full object-cover rounded-sm md:rounded"
-                        />
-                      </motion.div>
-                    ))}
-                  </div>
-                  <div className="tech-stack mt-3 md:mt-4">
-                    {["Next.js", "TypeScript", "Mapbox GL JS", "Tailwind CSS",  "Framer Motion"].map((tech, index) => (
-                      <motion.span 
-                        key={tech} 
-                        className="skill-tag text-xs md:text-sm"
-                        variants={skillTagVariants}
-                        custom={index}
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
-                  </div>
-                  <div className="flex gap-4 mt-3 md:mt-4">
-                    <Button asChild variant="default" size="sm" className="btn-primary text-xs md:text-sm">
-                      <Link href="https://trailreplay.com" target="_blank">
-                        <ExternalLink className="w-3 h-3 md:w-4 md:h-4 mr-2" />
-                        Visit Website
-                      </Link>
-                    </Button>
-                    <Button asChild variant="outline" size="sm" className="btn-outline text-xs md:text-sm">
-                      <Link href="https://github.com/alexalmansa/TrailReplay" target="_blank">
-                        <Github className="w-4 h-4 mr-2" />
-                        GitHub
-                      </Link>
-                    </Button>
+                  <div className="grid gap-6 p-6 lg:grid-cols-[0.88fr_1.12fr] lg:p-8">
+                    <div className="flex flex-col justify-between gap-6">
+                      <div>
+                        <div className="mb-3 inline-flex rounded-full border border-[#ebdcaf] bg-white/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#88753b]">
+                          Platform
+                        </div>
+                        <h3 className="text-2xl font-semibold tracking-tight text-[#201c13] md:text-3xl">
+                          ReserBee
+                        </h3>
+                        <p className="mt-3 text-sm leading-relaxed text-[#5d5337] md:text-base">
+                          ReserBee is a reservation management platform combining websites, payments, CRM, marketing, and
+                          AI automation. It is built for restaurants, events, trainers, wellness businesses, consultants,
+                          and other booking-led operations.
+                        </p>
+                      </div>
+                      <div>
+                        <div className="mb-4 grid gap-2 sm:grid-cols-2">
+                          {reserbeeCapabilities.map((item) => (
+                            <div key={item} className="rounded-2xl border border-[#ecdcb0] bg-white/70 px-3 py-3 text-sm text-[#3d3420]">
+                              {item}
+                            </div>
+                          ))}
+                        </div>
+                        <div className="tech-stack mb-0">
+                          {["Next.js", "Stripe", "WhatsApp", "Instagram DMs", "Google Calendar", "Multi-tenant product"].map((tech, index) => (
+                            <motion.span 
+                              key={tech}
+                              className="skill-tag border border-[#ebdcaf] bg-white/70 text-xs text-[#2f2718] hover:bg-[#fff0bc] hover:text-[#2f2718] md:text-sm"
+                              variants={skillTagVariants}
+                              custom={index}
+                            >
+                              {tech}
+                            </motion.span>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap gap-3">
+                        <Button asChild variant="default" size="sm" className="bg-[#211d13] text-[#fff4cf] hover:bg-[#14110a]">
+                          <Link href="https://reserbee.app/en/" target="_blank">
+                            <ExternalLink className="mr-2 h-4 w-4" />
+                            Visit Website
+                          </Link>
+                        </Button>
+                      </div>
+                    </div>
+                    <div className="space-y-5">
+                      <ReserBeePreview />
+                      <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+                        {reserbeeProjects.map((project) => (
+                          <Link
+                            key={project.name}
+                            href={project.href}
+                            target="_blank"
+                            className="group rounded-[1.35rem] border border-[#e8d7aa] bg-white/75 p-4 transition-all duration-200 hover:-translate-y-1 hover:border-[#d7bf71] hover:bg-white"
+                          >
+                            <div className="text-[10px] uppercase tracking-[0.28em] text-[#8e7a40]">{project.category}</div>
+                            <div className="mt-2 flex items-start justify-between gap-3">
+                              <h4 className="text-base font-semibold text-[#1d180f]">{project.name}</h4>
+                              <ExternalLink className="mt-0.5 h-4 w-4 text-[#8e7a40] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                            </div>
+                            <p className="mt-2 text-sm leading-relaxed text-[#655a3d]">{project.summary}</p>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               </motion.div>
@@ -968,54 +1012,6 @@ export default function Home() {
         </div>
       </main>
 
-      {/* Full screen gallery */}
-      {showGallery && (
-        <div className="gallery-fullscreen fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4" onClick={handleCloseGallery}>
-          <div className="gallery-fullscreen-content relative max-w-4xl mx-auto" onClick={(e) => e.stopPropagation()}>
-            <Image 
-              src={realEstateImages[currentImageIndex].src}
-              alt={realEstateImages[currentImageIndex].alt}
-              width={1200}
-              height={675}
-              className="w-full h-auto rounded-md"
-            />
-            <button className="gallery-close absolute top-2 right-2 md:top-4 md:right-4 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-black/50 rounded-full text-white" onClick={handleCloseGallery}>
-              <X size={20} />
-            </button>
-            <button className="gallery-nav gallery-prev absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-black/50 rounded-full text-white" onClick={handlePrevImage}>
-              <ChevronLeft size={20} />
-            </button>
-            <button className="gallery-nav gallery-next absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-black/50 rounded-full text-white" onClick={handleNextImage}>
-              <ChevronRight size={20} />
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* Full screen gallery for TrailReplay */}
-      {showTrailReplayGallery && (
-        <div className="gallery-fullscreen fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4" onClick={handleCloseTrailReplayGallery}>
-          <div className="gallery-fullscreen-content relative max-w-4xl mx-auto" onClick={(e) => e.stopPropagation()}>
-            <Image 
-              src={trailReplayImages[currentTrailReplayImageIndex].src}
-              alt={trailReplayImages[currentTrailReplayImageIndex].alt}
-              width={1200}
-              height={675}
-              className="w-full h-auto rounded-md"
-            />
-            <button className="gallery-close absolute top-2 right-2 md:top-4 md:right-4 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-black/50 rounded-full text-white" onClick={handleCloseTrailReplayGallery}>
-              <X size={20} />
-            </button>
-            <button className="gallery-nav gallery-prev absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-black/50 rounded-full text-white" onClick={handlePrevTrailReplayImage}>
-              <ChevronLeft size={20} />
-            </button>
-            <button className="gallery-nav gallery-next absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-black/50 rounded-full text-white" onClick={handleNextTrailReplayImage}>
-              <ChevronRight size={20} />
-            </button>
-          </div>
-        </div>
-      )}
-
       <footer className="py-4 md:py-6 border-t text-center">
         <div className="container text-sm md:text-base text-center text-muted-foreground">
           <p>© 2025 Alex Almansa - All Rights Reserved</p>
@@ -1024,4 +1020,3 @@ export default function Home() {
     </div>
   )
 }
-
