@@ -139,21 +139,6 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   );
 };
 
-const trailReplayHighlights = [
-  "GPX to video conversion",
-  "3D terrain and animated route playback",
-  "Map styles, stats overlays, and elevation",
-  "Media storytelling and export-ready videos",
-]
-
-const reserbeeCapabilities = [
-  "Websites",
-  "Payments",
-  "CRM",
-  "Marketing",
-  "AI automation",
-]
-
 const reserbeeProjects = [
   {
     name: "Mountain Memories",
@@ -180,168 +165,6 @@ const reserbeeProjects = [
     href: "https://littlestepstdh-frontend.pages.dev/",
   },
 ]
-
-const TrailReplayPreview = () => (
-  <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#111315] p-5 shadow-[0_32px_80px_-42px_rgba(0,0,0,0.95)]">
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(193,101,47,0.26),transparent_28%),radial-gradient(circle_at_left,rgba(73,167,255,0.16),transparent_34%)]" />
-    <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.16) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.16) 1px, transparent 1px)", backgroundSize: "26px 26px" }} />
-    <div className="relative space-y-4">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className="h-2.5 w-2.5 rounded-full bg-[#ff9a62]" />
-          <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
-          <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
-        </div>
-        <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.34em] text-white/[0.65]">
-          GPX to Video
-        </span>
-      </div>
-      <div className="grid gap-4 lg:grid-cols-[1.25fr_0.75fr]">
-        <div className="relative min-h-[260px] overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/[0.04] p-4">
-          <div className="absolute left-5 top-5 rounded-full border border-white/10 bg-black/[0.35] px-3 py-1 text-[10px] uppercase tracking-[0.28em] text-white/[0.65]">
-            Alpine replay
-          </div>
-          <svg viewBox="0 0 500 280" className="absolute inset-0 h-full w-full">
-            <path d="M26 232 C88 182, 118 172, 158 184 S224 250, 260 215 S322 106, 366 114 S430 186, 474 126" fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="24" strokeLinecap="round" />
-            <path d="M26 232 C88 182, 118 172, 158 184 S224 250, 260 215 S322 106, 366 114 S430 186, 474 126" fill="none" stroke="rgba(193,101,47,0.95)" strokeWidth="7" strokeLinecap="round" />
-            <motion.circle
-              cx="366"
-              cy="114"
-              r="8"
-              fill="#f7e5d8"
-              animate={{ scale: [1, 1.3, 1], opacity: [0.8, 1, 0.8] }}
-              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </svg>
-          <div className="absolute bottom-4 left-4 right-4 grid grid-cols-3 gap-3">
-            {[
-              { label: "Distance", value: "42.7 km" },
-              { label: "Elevation", value: "+1,940 m" },
-              { label: "Scenes", value: "18 clips" },
-            ].map((stat) => (
-              <div key={stat.label} className="rounded-2xl border border-white/10 bg-black/[0.35] px-3 py-3 backdrop-blur-sm">
-                <div className="text-[10px] uppercase tracking-[0.28em] text-white/[0.45]">{stat.label}</div>
-                <div className="mt-1 text-sm font-semibold text-white">{stat.value}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="space-y-4">
-          <div className="rounded-[1.6rem] border border-white/10 bg-white/[0.05] p-4">
-            <div className="text-[10px] uppercase tracking-[0.3em] text-white/[0.45]">Pipeline</div>
-            <div className="mt-3 space-y-3">
-              {["Upload GPX", "Style route", "Add media", "Render MP4"].map((step, index) => (
-                <motion.div
-                  key={step}
-                  className="flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-black/20 px-3 py-2"
-                  animate={{ x: index === 2 ? [0, 4, 0] : 0 }}
-                  transition={{ duration: 2.4, repeat: Infinity, delay: index * 0.2, ease: "easeInOut" }}
-                >
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#c1652f] text-[11px] font-semibold text-white">
-                    0{index + 1}
-                  </span>
-                  <span className="text-sm text-white/[0.84]">{step}</span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-          <div className="rounded-[1.6rem] border border-white/10 bg-white/[0.05] p-4">
-            <div className="flex items-end justify-between">
-              <div>
-                <div className="text-[10px] uppercase tracking-[0.3em] text-white/[0.45]">Export health</div>
-                <div className="mt-2 text-2xl font-semibold text-white">Ready</div>
-              </div>
-              <div className="text-xs text-[#ffb387]">4K • vertical • square</div>
-            </div>
-            <div className="mt-4 h-20 rounded-[1.2rem] border border-white/[0.08] bg-black/20 p-3">
-              <div className="flex h-full items-end gap-2">
-                {[32, 58, 49, 76, 55, 70, 84, 63].map((height, index) => (
-                  <motion.div
-                    key={`${height}-${index}`}
-                    className="flex-1 rounded-full bg-gradient-to-t from-[#c1652f] via-[#da8f60] to-[#f0d9c9]"
-                    style={{ height: `${height}%` }}
-                    animate={{ opacity: index === 4 ? [0.7, 1, 0.7] : 1 }}
-                    transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut", delay: index * 0.08 }}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-)
-
-const ReserBeePreview = () => (
-  <div className="relative overflow-hidden rounded-[2rem] border border-[#efe1ba] bg-[#fff8e6] p-5 shadow-[0_30px_70px_-40px_rgba(90,72,22,0.45)]">
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,236,133,0.5),transparent_25%),radial-gradient(circle_at_bottom_left,rgba(255,220,102,0.35),transparent_34%)]" />
-    <div className="relative space-y-4">
-      <div className="flex items-center justify-between">
-        <div>
-          <div className="text-[10px] uppercase tracking-[0.34em] text-[#8f7f4d]">ReserBee ecosystem</div>
-          <div className="mt-1 text-xl font-semibold text-[#1f1c13]">Booking platform + client rollouts</div>
-        </div>
-        <div className="rounded-full border border-[#e7d79a] bg-white/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#7f6b2f]">
-          4 live showcases
-        </div>
-      </div>
-      <div className="grid gap-4 lg:grid-cols-[0.82fr_1.18fr]">
-        <div className="space-y-4">
-          <div className="rounded-[1.5rem] border border-[#ead9a2] bg-white/80 p-4">
-            <div className="text-[10px] uppercase tracking-[0.3em] text-[#98854b]">Core modules</div>
-            <div className="mt-3 grid gap-2">
-              {["Reservations", "Payments", "CRM", "AI Bots"].map((module, index) => (
-                <motion.div
-                  key={module}
-                  className="rounded-2xl border border-[#f0e2b8] bg-[#fffaf0] px-3 py-2 text-sm font-medium text-[#2a2416]"
-                  animate={{ y: index === 1 ? [0, -2, 0] : 0 }}
-                  transition={{ duration: 2.8, repeat: Infinity, delay: index * 0.16, ease: "easeInOut" }}
-                >
-                  {module}
-                </motion.div>
-              ))}
-            </div>
-          </div>
-          <div className="rounded-[1.5rem] border border-[#ead9a2] bg-[#211d13] p-4 text-white">
-            <div className="text-[10px] uppercase tracking-[0.3em] text-[#f0d989]">Target verticals</div>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {["Restaurants", "Events", "Wellness", "Consulting", "SaaS"].map((vertical) => (
-                <span key={vertical} className="rounded-full border border-white/10 bg-white/[0.08] px-3 py-1 text-xs text-white/[0.78]">
-                  {vertical}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-        <div className="rounded-[1.5rem] border border-[#ead9a2] bg-white/[0.82] p-4">
-          <div className="flex items-center justify-between">
-            <div className="text-[10px] uppercase tracking-[0.3em] text-[#98854b]">Client projects</div>
-            <div className="text-xs text-[#6f5d27]">Spain, Japan, remote-first</div>
-          </div>
-          <div className="mt-3 space-y-2.5">
-            {reserbeeProjects.map((project, index) => (
-              <motion.div
-                key={project.name}
-                className="rounded-[1.2rem] border border-[#f2e5c0] bg-[#fffaf1] px-3 py-3"
-                animate={{ x: index === 3 ? [0, 3, 0] : 0 }}
-                transition={{ duration: 3.2, repeat: Infinity, delay: index * 0.12, ease: "easeInOut" }}
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <div className="text-sm font-semibold text-[#201a10]">{project.name}</div>
-                    <div className="mt-0.5 text-[11px] uppercase tracking-[0.22em] text-[#8b7840]">{project.category}</div>
-                  </div>
-                  <div className="h-2.5 w-2.5 rounded-full bg-[#f3c93f]" />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-)
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -839,150 +662,100 @@ export default function Home() {
                 variants={staggerContainer}
               >
                 <motion.div 
-                  className="project-card overflow-hidden rounded-[2rem] border-0 bg-[#0f1113] p-0 text-white shadow-[0_34px_90px_-48px_rgba(0,0,0,0.85)]"
+                  className="project-card rounded-[2rem] border-0 bg-[#0f1113] p-6 text-white shadow-[0_34px_90px_-48px_rgba(0,0,0,0.85)] lg:p-8"
                   variants={fadeIn}
                   whileHover={{ y: -8, transition: { duration: 0.25, type: "spring", stiffness: 120 } }}
                 >
-                  <div className="grid gap-6 p-6 lg:grid-cols-[1.12fr_0.88fr] lg:p-8">
-                    <TrailReplayPreview />
-                    <div className="flex flex-col justify-between gap-6">
-                      <div>
-                        <div className="mb-3 inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#f0c9af]">
-                          Product
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <Image
-                            src="/trailreplay-logo.png"
-                            alt="TrailReplay logo"
-                            width={44}
-                            height={44}
-                            className="h-11 w-11 rounded-xl"
-                          />
-                          <h3 className="text-2xl font-semibold tracking-tight text-white md:text-3xl">
-                            TrailReplay
-                          </h3>
-                        </div>
-                        <p className="mt-3 text-sm leading-relaxed text-white/[0.68] md:text-base">
-                          TrailReplay converts GPX tracks into polished replay videos for runners, cyclists, hikers, and
-                          outdoor creators, combining animated maps, elevation, stats, media inserts, and export-ready
-                          output. The website receives around 2,000 users monthly, with an average time on page of 5 minutes.
-                        </p>
+                  <div className="space-y-6">
+                    <div>
+                      <div className="mb-3 inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#f0c9af]">
+                        Product
                       </div>
-                      <div>
-                        <div className="mb-4 grid gap-2 sm:grid-cols-2">
-                          {trailReplayHighlights.map((item) => (
-                            <div key={item} className="rounded-2xl border border-white/10 bg-white/[0.045] px-3 py-3 text-sm text-white/80">
-                              {item}
-                            </div>
-                          ))}
-                        </div>
-                        <div className="tech-stack mb-0">
-                          {["React", "MapLibre GL", "GPX parsing", "Video export", "3D terrain", "Cloudflare Pages"].map((tech, index) => (
-                            <motion.span 
-                              key={tech}
-                              className="skill-tag border border-white/10 bg-white/[0.05] text-xs text-white/[0.84] hover:bg-white/10 hover:text-white md:text-sm"
-                              variants={skillTagVariants}
-                              custom={index}
-                            >
-                              {tech}
-                            </motion.span>
-                          ))}
-                        </div>
+                      <div className="flex items-center gap-3">
+                        <Image
+                          src="/trailreplay-logo.png"
+                          alt="TrailReplay logo"
+                          width={44}
+                          height={44}
+                          className="h-11 w-11 rounded-xl"
+                        />
+                        <h3 className="text-2xl font-semibold tracking-tight text-white md:text-3xl">
+                          TrailReplay
+                        </h3>
                       </div>
-                      <div className="flex flex-wrap gap-3">
-                        <Button asChild variant="default" size="sm" className="bg-[#c1652f] text-white hover:bg-[#a65426]">
-                          <Link href="https://trailreplay.com" target="_blank">
-                            <ExternalLink className="mr-2 h-4 w-4" />
-                            Visit Website
-                          </Link>
-                        </Button>
-                        <Button asChild variant="outline" size="sm" className="border-white/10 bg-transparent text-white hover:bg-white/[0.08] hover:text-white">
-                          <Link href="https://github.com/alexalmansa/TrailReplay" target="_blank">
-                            <Github className="mr-2 h-4 w-4" />
-                            GitHub
-                          </Link>
-                        </Button>
-                      </div>
+                      <p className="mt-3 max-w-3xl text-sm leading-relaxed text-white/[0.68] md:text-base">
+                        TrailReplay converts GPX tracks into polished replay videos for runners, cyclists, hikers, and
+                        outdoor creators, combining animated maps, elevation, stats, media inserts, and export-ready
+                        output. The website receives around 2,000 users monthly, with an average time on page of 5 minutes.
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap gap-3">
+                      <Button asChild variant="default" size="sm" className="bg-[#c1652f] text-white hover:bg-[#a65426]">
+                        <Link href="https://trailreplay.com" target="_blank">
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          Visit Website
+                        </Link>
+                      </Button>
+                      <Button asChild variant="outline" size="sm" className="border-white/10 bg-transparent text-white hover:bg-white/[0.08] hover:text-white">
+                        <Link href="https://github.com/alexalmansa/TrailReplay" target="_blank">
+                          <Github className="mr-2 h-4 w-4" />
+                          GitHub
+                        </Link>
+                      </Button>
                     </div>
                   </div>
                 </motion.div>
                 <motion.div 
-                  className="project-card overflow-hidden rounded-[2rem] border border-[#eadbb2] bg-[#fff6df] p-0 shadow-[0_30px_80px_-50px_rgba(120,91,16,0.45)]"
+                  className="project-card rounded-[2rem] border border-[#eadbb2] bg-[#fff6df] p-6 shadow-[0_30px_80px_-50px_rgba(120,91,16,0.45)] lg:p-8"
                   variants={fadeIn}
                   whileHover={{ y: -8, transition: { duration: 0.25, type: "spring", stiffness: 120 } }}
                 >
-                  <div className="grid gap-6 p-6 lg:grid-cols-[0.88fr_1.12fr] lg:p-8">
-                    <div className="flex flex-col justify-between gap-6">
-                      <div>
-                        <div className="mb-3 inline-flex rounded-full border border-[#ebdcaf] bg-white/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#88753b]">
-                          Platform
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <Image
-                            src="/reserbee-logo.svg"
-                            alt="ReserBee logo"
-                            width={44}
-                            height={44}
-                            className="h-11 w-11"
-                          />
-                          <h3 className="text-2xl font-semibold tracking-tight text-[#201c13] md:text-3xl">
-                            ReserBee
-                          </h3>
-                        </div>
-                        <p className="mt-3 text-sm leading-relaxed text-[#5d5337] md:text-base">
-                          ReserBee combines websites, payments, CRM, marketing, and AI automation. It is built for
-                          restaurants, events, trainers, wellness businesses, consultants, and other booking-led operations.
-                        </p>
+                  <div className="space-y-6">
+                    <div>
+                      <div className="mb-3 inline-flex rounded-full border border-[#ebdcaf] bg-white/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#88753b]">
+                        Platform
                       </div>
-                      <div>
-                        <div className="mb-4 grid gap-2 sm:grid-cols-3">
-                          {reserbeeCapabilities.map((item) => (
-                            <div key={item} className="rounded-2xl border border-[#ecdcb0] bg-white/70 px-3 py-3 text-sm text-[#3d3420]">
-                              {item}
-                            </div>
-                          ))}
-                        </div>
-                        <div className="tech-stack mb-0">
-                          {["Next.js", "Stripe", "WhatsApp", "Instagram DMs", "Google Calendar", "Multi-tenant product"].map((tech, index) => (
-                            <motion.span 
-                              key={tech}
-                              className="skill-tag border border-[#ebdcaf] bg-white/70 text-xs text-[#2f2718] hover:bg-[#fff0bc] hover:text-[#2f2718] md:text-sm"
-                              variants={skillTagVariants}
-                              custom={index}
-                            >
-                              {tech}
-                            </motion.span>
-                          ))}
-                        </div>
+                      <div className="flex items-center gap-3">
+                        <Image
+                          src="/reserbee-logo.svg"
+                          alt="ReserBee logo"
+                          width={44}
+                          height={44}
+                          className="h-11 w-11"
+                        />
+                        <h3 className="text-2xl font-semibold tracking-tight text-[#201c13] md:text-3xl">
+                          ReserBee
+                        </h3>
                       </div>
-                      <div className="flex flex-wrap gap-3">
-                        <Button asChild variant="default" size="sm" className="bg-[#211d13] text-[#fff4cf] hover:bg-[#14110a]">
-                          <Link href="https://reserbee.app/en/" target="_blank">
-                            <ExternalLink className="mr-2 h-4 w-4" />
-                            Visit Website
-                          </Link>
-                        </Button>
-                      </div>
+                      <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#5d5337] md:text-base">
+                        ReserBee combines websites, payments, CRM, marketing, and AI automation. It is built for
+                        restaurants, events, trainers, wellness businesses, consultants, and other booking-led operations.
+                      </p>
                     </div>
-                    <div className="space-y-5">
-                      <ReserBeePreview />
-                      <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-                        {reserbeeProjects.map((project) => (
-                          <Link
-                            key={project.name}
-                            href={project.href}
-                            target="_blank"
-                            className="group rounded-[1.35rem] border border-[#e8d7aa] bg-white/75 p-4 transition-all duration-200 hover:-translate-y-1 hover:border-[#d7bf71] hover:bg-white"
-                          >
-                            <div className="text-[10px] uppercase tracking-[0.28em] text-[#8e7a40]">{project.category}</div>
-                            <div className="mt-2 flex items-start justify-between gap-3">
-                              <h4 className="text-base font-semibold text-[#1d180f]">{project.name}</h4>
-                              <ExternalLink className="mt-0.5 h-4 w-4 text-[#8e7a40] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                            </div>
-                            <p className="mt-2 text-sm leading-relaxed text-[#655a3d]">{project.summary}</p>
-                          </Link>
-                        ))}
-                      </div>
+                    <div className="flex flex-wrap gap-3">
+                      <Button asChild variant="default" size="sm" className="bg-[#211d13] text-[#fff4cf] hover:bg-[#14110a]">
+                        <Link href="https://reserbee.app/en/" target="_blank">
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          Visit Website
+                        </Link>
+                      </Button>
+                    </div>
+                    <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+                      {reserbeeProjects.map((project) => (
+                        <Link
+                          key={project.name}
+                          href={project.href}
+                          target="_blank"
+                          className="group rounded-[1.35rem] border border-[#e8d7aa] bg-white/75 p-4 transition-all duration-200 hover:-translate-y-1 hover:border-[#d7bf71] hover:bg-white"
+                        >
+                          <div className="text-[10px] uppercase tracking-[0.28em] text-[#8e7a40]">{project.category}</div>
+                          <div className="mt-2 flex items-start justify-between gap-3">
+                            <h4 className="text-base font-semibold text-[#1d180f]">{project.name}</h4>
+                            <ExternalLink className="mt-0.5 h-4 w-4 text-[#8e7a40] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                          </div>
+                          <p className="mt-2 text-sm leading-relaxed text-[#655a3d]">{project.summary}</p>
+                        </Link>
+                      ))}
                     </div>
                   </div>
                 </motion.div>
