@@ -1,9 +1,5 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import { Analytics } from '@vercel/analytics/react'
 import "./globals.css"
-
-const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Alex Almansa - DevOps & Cloud Engineer",
@@ -17,14 +13,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} antialiased min-h-screen bg-background`}>
+      <body className="antialiased min-h-screen bg-background">
         {children}
-        <Analytics />
       </body>
     </html>
   )
 }
-
-
-
-import './globals.css'
